@@ -21,6 +21,11 @@ python scripts/figures/manuscript/plot_external_predictions_S6.py
 python scripts/figures/manuscript/plot_S7_lead_sensitivity.py
 ```
 
+The seven packages in `requirements.txt` cover result-level figure and table
+reproduction only. Model-level representation screening and training ran on an
+internal platform with additional dependencies; those steps are outside the
+scope of this repository.
+
 The remaining manuscript and Supplementary Information figure scripts follow
 the same convention and write to `manuscript/Figures/`. Figure 3 is generated
 with `python scripts/figures/plot_data_analysis.py --pmf-selection fixed-rgroup`.
@@ -62,6 +67,12 @@ figure scripts are under `scripts/figures/`.
 external LOGO metrics and per-motif predictions, whereas
 `data/logo_cv_full_outer_summary.csv` contains the training-partition CV
 values shown in Fig. 5a.
+
+In `data/logo_metrics.csv`, `optimism_ok` is the agreement flag between the
+internal-selection Pearson r (`primary_metric`) and the external test Pearson
+r (`test_pearson_r`): it is `yes` when the two agree within 0.1, `no`
+otherwise. Every row is a fully trained model with an external test result;
+`optimism_ok` is not a training-success marker.
 
 ## Molecular-dynamics inputs
 
