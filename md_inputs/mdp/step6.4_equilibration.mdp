@@ -1,0 +1,39 @@
+define                  = -DPOSRES -DPOSRES_FC_LIPID=200.0 -DDIHRES -DDIHRES_FC=200.0
+integrator              = md
+dt                      = 0.002
+nsteps                  = 250000  ; 500 ps
+nstfout                 = 0       ; save forces every 10.0 ps
+nstxout                 = 0       ; save coordinates every 10.0 ps
+nstvout                 = 0       ; save velocities every 1.0 ps
+nstenergy               = 25000    ; save energies every 50.0 ps
+nstlog                  = 25000    ; update log file every 50.0 ps
+;
+cutoff-scheme           = Verlet
+nstlist                 = 20
+rlist                   = 1.2
+vdwtype                 = Cut-off
+vdw-modifier            = Force-switch
+rvdw_switch             = 1.0
+rvdw                    = 1.2
+coulombtype             = PME
+rcoulomb                = 1.2
+;
+tcoupl                  = V-rescale
+tc_grps                 = MEMB SOLV
+tau_t                   = 1.0 1.0
+ref_t                   = 310    310
+;
+pcoupl                  = C-rescale
+pcoupltype              = semiisotropic
+tau_p                   = 5.0
+compressibility         = 4.5e-5  4.5e-5
+ref_p                   = 1.0     1.0
+refcoord_scaling        = com
+;
+constraints             = h-bonds
+constraint_algorithm    = LINCS
+continuation            = yes
+;
+nstcomm                 = 100
+comm_mode               = linear
+comm_grps               = MEMB SOLV

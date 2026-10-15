@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.db
+*.sqlite*
+*.ckpt
+*.pt
+*.trr
+*.xtc
+*.cpt
+*.edr
+*.tpr
+cache/
+outputs/
