@@ -4,12 +4,10 @@ Public result-level data, selected molecular-dynamics inputs and paper-specific
 scripts for the manuscript *Machine Learning-Guided Prioritization of
 Zwitterionic Polymer Motifs for Membrane Interaction Simulations*.
 
-Result-level reproduction uses the processed files in `data/` to regenerate
-reported statistics, tables, and figures. Model-level reproduction uses the
-training scripts but additionally requires the specified external MolBlender
-installation and its optional dependencies.
+The processed files in `data/` reproduce the reported statistics, tables and
+figures. This repository contains paper-specific result analysis only.
 
-## Reproduction
+## Result-level reproduction
 
 Create an environment from `requirements.txt`, then run commands from the
 repository root. The following commands regenerate the central LOGO figures
@@ -40,23 +38,11 @@ python scripts/figures/manuscript/export_tableS6_prospective_pmf.py
 python scripts/figures/manuscript/export_tableS7_prospective_library.py
 ```
 
-The LOGO scripts use five target classes (A/N, C, H, P and S) and
-`random_state=42`. Candidate representation-model combinations were screened
-within each LOGO training partition; the selected configuration was then
-retrained and evaluated on the isolated target class by
-`scripts/logo/retrain_logo_best_model.py`. The deployment analysis used a
-five-fold split, retained 16 eligible finalists, evaluated all 6,868
-two-to-five-member ensembles, and selected a five-member ensemble. The 16
-single-model results were retained as separate comparators and are not part of
-the 6,868 ensemble count.
-
-The historical LOGO screening was run with MolBlender snapshot
-`c0b58c6c1524f26917b4301d77b1ecfb589de878`. MolBlender itself is not bundled
-in this paper repository. To inspect or rerun model-level code, provide a
-compatible checkout through `MOLBLENDER_ROOT` (or install it on `PYTHONPATH`)
-and install the model-specific optional dependencies. The processed screening,
-external-test and out-of-fold outputs needed for result-level reproduction are
-included under `data/`.
+The released LOGO results cover five target classes (A/N, C, H, P and S). The
+deployment exports contain 16 eligible single-model finalists, all 6,868
+two-to-five-member ensemble combinations, and the selected five-member
+ensemble. Single-model results are separate comparators and are not included
+in the 6,868 ensemble count.
 
 MD-input review uses the selected files in `md_inputs/` to inspect the
 force-field, equilibration and umbrella-window settings. The release does not
